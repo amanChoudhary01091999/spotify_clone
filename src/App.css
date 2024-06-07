@@ -1,3 +1,5 @@
+/* App.css */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -72,7 +74,6 @@ body {
 .tabs-container {
   position: sticky;
   top: 0;
-  /* background-color: rgba(40, 40, 40, 0.9); */
   z-index: 1000;
   width: 100%;
   padding: 10px 0;
@@ -117,8 +118,7 @@ body {
   flex-direction: column;
   overflow-y: auto;
   flex: 1 1 auto;
-  max-height: calc(100vh - 20px);
-  /* Adjust the height as needed */
+  max-height: calc(50vh - 20px);
   overflow-x: hidden;
 }
 
@@ -140,6 +140,8 @@ body {
   color: white;
   flex: 0 0 auto;
   align-items: center;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .song-item {
@@ -196,12 +198,9 @@ body {
 
 .player-cover {
   width: 100%;
-  height: 300px;
-  /* Set a fixed height */
+  height: auto;
   max-width: 500px;
-  /* Set a max width */
   object-fit: cover;
-  /* Ensures the image covers the area without stretching */
   border-radius: 20px;
   margin-bottom: 10px;
 }
@@ -263,6 +262,7 @@ body {
 
   .song-list-container {
     width: 35%;
+    max-height: 100%;
   }
 
   .player {
@@ -270,13 +270,13 @@ body {
     margin-left: 100px;
     padding: 50px;
     align-items: flex-start;
+    max-height: 100%;
   }
 
   .player img {
     max-width: 500px;
     width: 100%;
-    height: 300px;
-    /* Ensure the image has a fixed height */
+    height: auto;
   }
 
   .player-text h5 {
@@ -288,10 +288,19 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+  .player {
+    width: 30%;
+  }
+
+  .player-cover {
+    width: 70%;
+  }
+}
+
 #audioPlayer {
   background-color: transparent;
   border: none;
-  /* Optional: remove border */
 }
 
 .songListDiv {
