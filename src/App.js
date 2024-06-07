@@ -17,7 +17,7 @@ function App() {
           <div className="App">
             <div className="sidebar">
               <div className="header">
-                <img src="/logo_spotify-removebg-preview (1).png" alt="Spotify Logo" className="logo" />
+                <img src="https://cdn.ndhgo.com/dev/royelectronics12_ndh01_com/images/cb94efac-dfce-454a-a761-7c45399b4de1.png" alt="Spotify Logo" className="logo" />
                 <h1>Spotify</h1>
               </div>
               <div className="profile">
