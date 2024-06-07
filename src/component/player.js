@@ -23,8 +23,7 @@ const Player = () => {
                         <p>{currentSong.artist}</p>
                     </div>
                     <div className="player-content">
-                        <img className="player-cover" src={`https://cms.samespace.com/assets/${currentSong.cover}`} alt={currentSong.name} />
-
+                        <img className="player-cover" src={`${process.env.REACT_APP_DEFAULT_URL}/assets/${currentSong.cover}`} alt={currentSong.name} />
                         <audio id="audioPlayer" ref={audioRef} controls className="player-audio"></audio>
                     </div>
                 </>

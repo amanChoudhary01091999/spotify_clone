@@ -46,7 +46,7 @@ const BackgroundUpdater = () => {
   useEffect(() => {
     const root = document.getElementById('root');
     if (currentSong) {
-      const newBackgroundUrl = `https://cms.samespace.com/assets/${currentSong.cover}`;
+      const newBackgroundUrl = `${process.env.REACT_APP_DEFAULT_URL}/assets/${currentSong.cover}`;
       root.style.background = `linear-gradient(rgba(0, 0, 0, 0.95) 80%, rgba(0, 0, 0, 0.95) 80%), url('${newBackgroundUrl}')`;
       root.style.backgroundRepeat = 'repeat'
 
@@ -59,6 +59,3 @@ const BackgroundUpdater = () => {
   }, [currentSong]);
 }
 export default App;
-
-// backgroundColor: 'blue'
-// backgroundImage: currentSong ? `url('https://cms.samespace.com/assets/${currentSong.cover}')` : 'none'

@@ -9,7 +9,7 @@ const SongList = () => {
     const { setCurrentSong } = useContext(SongContext);
 
     useEffect(() => {
-        fetch('https://cms.samespace.com/items/songs')
+        fetch(`${process.env.REACT_APP_DEFAULT_URL}/items/songs`)
             .then(response => response.json())
             .then(data => {
                 setSongs(data.data);
@@ -34,66 +34,71 @@ const SongList = () => {
             {
                 filteredSongs.length > 0 ?
                     <>
+
                         <div style={{ position: 'sticky', zIndex: 1000, top: 0 }}>
-                            <div className="tabs" style={{ display: 'flex', padding: '10px 0' }}>
-                                <h4 className="tab active" style={{ margin: 0, color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>For You</h4>
-                                <h4 className="tab" style={{ margin: 0, color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>Top Tracks</h4>
-                            </div>
-                            <div style={{ padding: '10px' }}>
-                                <input
-                                    type="text"
-                                    placeholder="Search song, artist..."
-                                    className="search-bar"
-                                    value={searchQuery}
-                                    onChange={handleSearch}
-                                    style={{
-                                        backgroundColor: 'rgba(40, 40, 40, 0.8)',
-                                        border: 'none',
-                                        outline: 'none',
-                                        padding: '15px',
-                                        fontSize: '15px',
-                                        borderRadius: '5px',
-                                        fontFamily: "Montserrat sans-serif",
-                                        fontWeight: 'normal',
-                                        color: '#EDEADE',
-                                        width: '100%'
-                                    }}
-                                />
+                            <div className="tabs-container">
+                                <div className="tabs" style={{ display: 'flex', padding: '0.635rem 0' }}>
+                                    <h4 className="tab active" style={{ margin: 0, color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>For You</h4>
+                                    <h4 className="tab" style={{ margin: 0, color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>Top Tracks</h4>
+                                </div>
+                                <div style={{ padding: '0.625rem' }}>
+                                    <input
+                                        type="text"
+                                        placeholder="Search song, artist..."
+                                        className="search-bar"
+                                        value={searchQuery}
+                                        onChange={handleSearch}
+                                        style={{
+                                            backgroundColor: 'rgba(40, 40, 40, 0.8)',
+                                            border: 'none',
+                                            outline: 'none',
+                                            padding: '0.938rem',
+                                            fontSize: '0.938rem',
+                                            borderRadius: '0.313rem',
+                                            fontFamily: "Montserrat sans-serif",
+                                            fontWeight: 'normal',
+                                            color: '#EDEADE',
+                                            width: '100%'
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
+                        <div className='songListDiv'>
 
-                        {filteredSongs.map(song => (
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                position: 'relative',
-                                backgroundColor: song.id === selectedSong?.id ? 'rgba(40, 40, 40, 0.8)' : '',
-                                padding: '15px',
-                                borderRadius: "12px"
-                            }} key={song.id} onClick={() => playSong(song)}>
-                                <img
-                                    src={`https://cms.samespace.com/assets/${song.cover}`} alt="Small Image"
-                                    style={{ marginRight: '20px', borderRadius: "50%" }}
-                                    width="60"
-                                    height="60"
-                                />
-                                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <h5 style={{ fontSize: '20px', margin: '0', color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.name}</h5>
-                                    <p style={{ fontSize: '14px', margin: '5px 0 0 0', color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.artist}</p>
-                                </div>
+                            {filteredSongs.map(song => (
                                 <div style={{
-                                    position: 'absolute',
-                                    bottom: '30px',
-                                    right: '20px',
-                                    fontSize: '16px',
-                                    color: 'grey',
-                                    fontFamily: "Montserrat sans-serif", fontWeight: 'normal'
-                                }}>
-                                    4:26
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    position: 'relative',
+                                    backgroundColor: song.id === selectedSong?.id ? 'rgba(40, 40, 40, 0.8)' : '',
+                                    padding: '0.938rem',
+                                    borderRadius: "0.75rem"
+                                }} key={song.id} onClick={() => playSong(song)}>
+                                    <img
+                                        src={`${process.env.REACT_APP_DEFAULT_URL}/assets/${song.cover}`} alt="Small Image"
+                                        style={{ marginRight: '1.25rem', borderRadius: "50%" }}
+                                        width="60"
+                                        height="60"
+                                    />
+                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                        <h5 style={{ fontSize: '1.25rem', margin: '0', color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.name}</h5>
+                                        <p style={{ fontSize: '0.875rem', margin: '0.313rem 0 0 0', color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.artist}</p>
+                                    </div>
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '0.313rem',
+                                        right: '1.25rem',
+                                        fontSize: '1rem',
+                                        color: 'grey',
+                                        fontFamily: "Montserrat sans-serif", fontWeight: 'normal'
+                                    }}>
+                                        4:26
+                                    </div>
                                 </div>
-                            </div>
 
-                        ))}
+                            ))}
+                        </div>
 
                     </>
                     : <></>
