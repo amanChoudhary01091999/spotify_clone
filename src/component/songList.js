@@ -82,14 +82,15 @@ const SongList = () => {
                                         height="60"
                                     />
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <h5 style={{ fontSize: '1.25rem', margin: '0', color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.name}</h5>
-                                        <p style={{ fontSize: '0.875rem', margin: '0.313rem 0 0 0', color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.artist}</p>
+                                        <h5 style={{ fontSize: 'calc(1rem + 0.2vw)', margin: '0', color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.name}</h5>
+                                        <p style={{ fontSize: 'calc(0.5rem + 0.2vw)', margin: '0.313rem 0 0 0', color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>{song.artist}</p>
                                     </div>
                                     <div style={{
                                         position: 'absolute',
-                                        bottom: '0.313rem',
+                                        bottom: '1rem',
+                                        marginBottom: '1rem',
                                         right: '1.25rem',
-                                        fontSize: '1rem',
+                                        fontSize: 'calc(0.5rem + 0.2vw)',
                                         color: 'grey',
                                         fontFamily: "Montserrat sans-serif", fontWeight: 'normal'
                                     }}>
