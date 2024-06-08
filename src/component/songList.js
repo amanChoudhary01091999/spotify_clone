@@ -3,6 +3,7 @@ import { SongContext } from '../context/songProvider';
 
 const SongList = () => {
     const [songs, setSongs] = useState([]);
+    const [activeTab, setActiveTab] = useState(0)
     const [selectedSong, setSelectedSong] = React.useState(null)
     const [filteredSongs, setFilteredSongs] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +17,7 @@ const SongList = () => {
                 setFilteredSongs(data.data);
             })
     }, []);
+    
     const playSong = (song) => {
         setCurrentSong(song);
         setSelectedSong(song)
@@ -29,6 +31,22 @@ const SongList = () => {
         setFilteredSongs(filtered);
     };
 
+    const handleTabs = (tab) => {
+        switch (tab) {
+            case 'all':
+                setActiveTab(0)
+                setFilteredSongs(songs)
+                break
+            case 'top':
+                setActiveTab(1)
+                const topTracks = songs.slice(6)
+                setFilteredSongs(topTracks)
+                break
+
+        }
+
+    }
+
     return (
         <>
             {
@@ -38,8 +56,8 @@ const SongList = () => {
                         <div style={{ position: 'sticky', zIndex: 1000, top: 0 }}>
                             <div className="tabs-container">
                                 <div className="tabs" style={{ display: 'flex', padding: '0.635rem 0' }}>
-                                    <h4 className="tab active" style={{ margin: 0, color: '#EDEADE', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>For You</h4>
-                                    <h4 className="tab" style={{ margin: 0, color: 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }}>Top Tracks</h4>
+                                    <h4 className={activeTab === 0 ? `tab active` : 'tab'} style={{ margin: 0, color: activeTab === 0 ? '#EDEADE' : 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }} onClick={() => handleTabs('all')}>For You</h4>
+                                    <h4 className={activeTab === 1 ? `tab active` : 'tab'} style={{ margin: 0, color: activeTab === 1 ? '#EDEADE' : 'grey', fontFamily: "Montserrat sans-serif", fontWeight: 'normal' }} onClick={() => handleTabs('top')}>Top Tracks</h4>
                                 </div>
                                 <div style={{ padding: '0.625rem' }}>
                                     <input

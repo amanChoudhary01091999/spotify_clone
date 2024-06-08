@@ -18,7 +18,7 @@ function App() {
             <div className="sidebar">
               <div className="header">
                 <img src="https://cdn.ndhgo.com/dev/royelectronics12_ndh01_com/images/cb94efac-dfce-454a-a761-7c45399b4de1.png" alt="Spotify Logo" className="logo" />
-                <h1>Spotify</h1>
+                <h1 >Spotify</h1>
               </div>
               <div className="profile">
                 <img src="/—Pngtree—user profile avatar_13369988.png" alt="Profile" className="profile-pic" />
@@ -28,6 +28,7 @@ function App() {
               <div className="song-list-container">
                 <SongList />
               </div>
+
               <Player />
             </div>
 

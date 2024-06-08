@@ -25,30 +25,40 @@ const Player = () => {
         };
     }, []);
 
-    console.log({ isMobile })
-
 
     return (
-        <div className="player" >
-            {currentSong ? (
-                <>
-                    {
-                        isMobile ? <> <audio id="audioPlayer" ref={audioRef} controls className="player-audio"></audio></> :
-                            <>
-                                <div className="player-text">
-                                    <h5>{currentSong.name}</h5>
-                                    <p>{currentSong.artist}</p>
-                                </div>
-                                <div className="player-content">
-                                    <img className="player-cover" src={`${process.env.REACT_APP_DEFAULT_URL}/assets/${currentSong.cover}`} alt={currentSong.name} />
-                                    <audio id="audioPlayer" ref={audioRef} controls className="player-audio"></audio>
-                                </div>
-                            </>
-                    } </>
+        < >
+            {
+                isMobile ?
+                    <>
+                        {
+                            currentSong &&
+                            <div className="player">
+                                <audio id="audioPlayer" ref={audioRef} controls className="player-audio"></audio>
+                            </div>
+                        }
+                    </> : <>
+                        <div className="player">
+                            {
+                                currentSong &&
+                                <>
+                                    <div className="player-text">
+                                        <h5>{currentSong.name}</h5>
+                                        <p>{currentSong.artist}</p>
+                                    </div>
+                                    <div className="player-content">
+                                        <img className="player-cover" src={`${process.env.REACT_APP_DEFAULT_URL}/assets/${currentSong.cover}`} alt={currentSong.name} />
+                                        <audio id="audioPlayer" ref={audioRef} controls className="player-audio"></audio>
+                                    </div>
+                                </>
+                            }
 
-            ) : <></>
+                        </div>
+
+                    </>
             }
-        </div>)
+        </>
+    )
 
 };
 
