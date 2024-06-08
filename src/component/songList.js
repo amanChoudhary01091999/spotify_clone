@@ -17,7 +17,7 @@ const SongList = () => {
                 setFilteredSongs(data.data);
             })
     }, []);
-    
+
     const playSong = (song) => {
         setCurrentSong(song);
         setSelectedSong(song)
@@ -31,6 +31,13 @@ const SongList = () => {
         setFilteredSongs(filtered);
     };
 
+    const getRandomTime = () => {
+        const firstDigit = Math.floor(Math.random() * 6);
+        const lastTwoDigits = Math.floor(Math.random() * 41) + 10;
+        const randomTime = `${firstDigit}:${lastTwoDigits}`;
+        return randomTime;
+    }
+
     const handleTabs = (tab) => {
         switch (tab) {
             case 'all':
@@ -39,7 +46,7 @@ const SongList = () => {
                 break
             case 'top':
                 setActiveTab(1)
-                const topTracks = songs.slice(6)
+                const topTracks = songs.filter((x) => x.top_track === true)
                 setFilteredSongs(topTracks)
                 break
 
@@ -112,7 +119,7 @@ const SongList = () => {
                                         color: 'grey',
                                         fontFamily: "Montserrat sans-serif", fontWeight: 'normal'
                                     }}>
-                                        4:26
+                                        {getRandomTime()}
                                     </div>
                                 </div>
 
